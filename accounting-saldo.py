@@ -35,12 +35,12 @@ def loopDates(firstdate,lastdate):
         s_m=1
         s_y=s_y+1
   return loop
-    
-    
-  
+
+
+
 def myFunc(e):
   (m,d) = e.split('/')
-  return int(d)+int(m)*30 
+  return int(d)+int(m)*30
 
 def computeDurationFromSaldo(du):
     #4013:04:36
@@ -74,7 +74,7 @@ def getVO(u):
             vo= 'alice'
 #    print ("VO", u, vo)
     return vo
-    
+
 filename = 'accounting-saldo.out'
 bydate= {}
 file=open (filename,"r")
@@ -180,8 +180,8 @@ for i in range(0,len(cms)):
         lhcbtot.append(lhcb[i])
         alicetot.append(alice[i])
         natot.append(na[i])
-    
-        
+
+
     else:
         cmstot.append(cms[i]+cmstot[i-1])
         atlastot.append(atlas[i]+atlastot[i-1])
@@ -201,6 +201,14 @@ for i in (cmstot,atlastot,lhcbtot,alicetot,natot):
     tottot = tottot+i[-1]
 
 print ("Total used is ",tottot,"hours out of 30M, which is",tottot/30e6*100, "%")
+# calculate speed
+speed=0
+for i in range(len(cms)-10,len(cms)):
+    speed = speed+cms[i]+atlas[i]+alice[i]+lhcb[i]+na[i]
+import datetime
+
+print ("Speed of utilization in the last 10 days:", speed/10., "per day. At this speed, there are", round((30e6-tottot)/(speed/10.)), "days left to reach 30e6.")
+print ("That date would be",datetime.date.today()+datetime.timedelta(days=round((30e6-tottot)/(speed/10.))))
 
 
 
@@ -277,7 +285,7 @@ axes.set_ylim([0,300*68*24])
 
 
 plt.subplot(4, 1, 3)
-explode = (0.5, 0.5, 0.5, 0.5, 0.5)  
+explode = (0.5, 0.5, 0.5, 0.5, 0.5)
 plt.pie(tots.values(),explode=explode, startangle=0,labels=('CMS', 'ATLAS','LHCb', 'ALICE', 'N/A'),autopct='%1.1f%%', shadow=True)
 
 #plt.show()
@@ -286,7 +294,7 @@ tots['Unused'] = 30e6-tottot
 
 
 plt.subplot(4, 1, 4)
-explode = (0.5, 0.5, 0.5, 0.5, 0.5,0.)  
+explode = (0.5, 0.5, 0.5, 0.5, 0.5,0.)
 plt.pie(tots.values(),explode=explode, startangle=180,labels=('CMS', 'ATLAS','LHCb', 'ALICE', 'N/A','Unused'),autopct='%1.1f%%', shadow=True)
 
 #plt.show()
