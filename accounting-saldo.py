@@ -208,7 +208,7 @@ for i in range(len(cms)-10,len(cms)):
 import datetime
 
 print ("Speed of utilization in the last 10 days:", speed/10., "per day. At this speed, there are", round((30e6-tottot)/(speed/10.)), "days left to reach 30e6.")
-print ("That date would be",datetime.date.today()+datetime.timedelta(days=round((30e6-tottot)/(speed/10.))))
+print ("It is", round (1000*speed/10./30e6)/10.,"% per day. That date would be",datetime.date.today()+datetime.timedelta(days=round((30e6-tottot)/(speed/10.))))
 
 
 
