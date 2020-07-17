@@ -295,6 +295,8 @@ plt.pie(tots.values(),explode=explode, startangle=0,labels=('CMS', 'ATLAS','LHCb
 #plt.show()
 
 tots['Unused'] = 30e6-tottot
+if tots['Unused'] <0:
+        tots['Unused']=0
 
 
 plt.subplot(4, 1, 4)
