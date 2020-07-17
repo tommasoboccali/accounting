@@ -193,7 +193,11 @@ for i in range(0,len(cms)):
     lhcbday.append(lhcb[i])
     aliceday.append(alice[i])
     naday.append(na[i])
-    unusedtot.append(30e6-cmstot[-1]-atlastot[-1]-lhcbtot[-1]-alicetot[-1]-natot[-1])
+    unus = 30e6-cmstot[-1]-atlastot[-1]-lhcbtot[-1]-alicetot[-1]-natot[-1]
+    if unus>0:
+        unusedtot.append(30e6-cmstot[-1]-atlastot[-1]-lhcbtot[-1]-alicetot[-1]-natot[-1])
+    else:
+        unusedtot.append(0)
     unusedday.append(288*68*24-cmsday[-1]-atlasday[-1]-lhcbday[-1]-aliceday[-1]-naday[-1])
 
 tottot=0
