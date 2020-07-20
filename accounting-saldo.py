@@ -237,7 +237,7 @@ unusedd=np.array(unusedday)
 plt.figure(figsize=(6,10))
 
 
-plt.subplot(4, 1, 1)
+plt.subplot(3, 1, 1)
 
 #p1 = plt.bar(ind, cms, width)
 #p2 = plt.bar(ind, atlas, width,bottom=cms)
@@ -260,7 +260,7 @@ axes.set_ylim([0,35e6])
 
 #l = mlines.Line2D([0,1000], [30e6,30e6])
 #axes.add_line(l)
-plt.subplot(4, 1, 2)
+plt.subplot(3, 1, 2)
 
 #p1 = plt.bar(ind, cms, width)
 #p2 = plt.bar(ind, atlas, width,bottom=cms)
@@ -288,7 +288,7 @@ axes.set_ylim([0,300*68*24])
 
 
 
-plt.subplot(4, 1, 3)
+plt.subplot(3, 1, 3)
 explode = (0.5, 0.5, 0.5, 0.5, 0.5)
 plt.pie(tots.values(),explode=explode, startangle=0,labels=('CMS', 'ATLAS','LHCb', 'ALICE', 'N/A'),autopct='%1.1f%%', shadow=True)
 
@@ -299,9 +299,9 @@ if tots['Unused'] <0:
         tots['Unused']=0
 
 
-plt.subplot(4, 1, 4)
-explode = (0.5, 0.5, 0.5, 0.5, 0.5,0.)
-plt.pie(tots.values(),explode=explode, startangle=180,labels=('CMS', 'ATLAS','LHCb', 'ALICE', 'N/A','Unused'),autopct='%1.1f%%', shadow=True)
+#plt.subplot(4, 1, 4)
+#explode = (0.5, 0.5, 0.5, 0.5, 0.5,0.)
+#plt.pie(tots.values(),explode=explode, startangle=180,labels=('CMS', 'ATLAS','LHCb', 'ALICE', 'N/A','Unused'),autopct='%1.1f%%', shadow=True)
 
 #plt.show()
 plt.savefig('accounting-cineca.png')
