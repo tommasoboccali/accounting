@@ -204,7 +204,7 @@ tottot=0
 for i in (cmstot,atlastot,lhcbtot,alicetot,natot):
     tottot = tottot+i[-1]
 
-print ("Total used is ",tottot,"hours out of 30M, which is",tottot/30e6*100, "%")
+print ("Total used is ",tottot,"hours out of 30M, which is",int(tottot/30e6*100), "%")
 # calculate speed
 speed=0
 for i in range(len(cms)-10,len(cms)):
