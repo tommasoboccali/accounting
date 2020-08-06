@@ -214,7 +214,7 @@ import datetime
 print ("Speed of utilization in the last 10 days:", speed/10., "per day.")#" At this speed, there are", round((30e6-tottot)/(speed/10.)), "days left to reach 30e6.")
 print ("It is", round (1000*speed/10./30e6)/10.,"% per day.")#" That date would be",datetime.date.today()+datetime.timedelta(days=round((30e6-tottot)/(speed/10.))))
 deltadays = (datetime.datetime(2020, 10, 31, 23, 59, 59)-datetime.datetime.today()).days
-print ("Extrapolation to Oct 31st gives a total of",int(tottot/30e6*100)+deltadays*  round (1000*speed/10./30e6)/10. ,"%" )
+print ("Extrapolation to Oct 31st  (",deltadays,"days ) gives a total of",int(tottot/30e6*100)+deltadays*  round (1000*speed/10./30e6)/10. ,"%" )
 
 
 ind = np.arange(N)    # the x locations for the groups
