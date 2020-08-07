@@ -205,6 +205,14 @@ for i in (cmstot,atlastot,lhcbtot,alicetot,natot):
     tottot = tottot+i[-1]
 
 print ("Total used is ",tottot,"hours out of 30M, which is",int(tottot/30e6*100), "%")
+print ("It is distributed like:")
+print ("ATLAS: ",int(atlastot[-1]/30e6*100), "%")
+print ("CMS  : ",int(cmstot[-1]/30e6*100), "%")
+print ("ALICE: ",int(alicetot[-1]/30e6*100), "%")
+print ("LHCb : ",int(lhcbtot[-1]/30e6*100), "%")
+
+
+
 # calculate speed
 speed=0
 for i in range(len(cms)-10,len(cms)):
