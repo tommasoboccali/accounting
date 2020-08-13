@@ -1,7 +1,6 @@
 accounting*dat*gz
 Icon*
-accounting-saldo.out
-jobs.out
+*.out
 statscms
 *png
 
