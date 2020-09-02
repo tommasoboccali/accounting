@@ -8,6 +8,16 @@ import sys
 import matplotlib.ticker as mticker
 import matplotlib.lines as mlines
 
+def stringtodate(stri):
+    y = int(stri[0:4])
+    m = int(stri[4:6])
+    d = int(stri[6:8])
+    try:
+        dt =     datetime.datetime(y, m, d, 0, 0, 0)
+    except:
+        return (False)
+    return dt
+
 def loopDates(firstdate,lastdate):
 #  print(firstdate,lastdate)
   first_y = int(firstdate[0:4])
@@ -225,6 +235,7 @@ deltadays = (datetime.datetime(2020, 10, 31, 23, 59, 59)-datetime.datetime.today
 print ("Extrapolation to Oct 31st  (",deltadays,"days ) gives a total of",int(tottot/30e6*100)+deltadays*  round (1000*speed/10./30e6)/10. ,"%" )
 
 
+
 ind = np.arange(N)    # the x locations for the groups
 width = 0.35       # the width of the bars: can also be len(x) sequence
 cms=np.array(cmstot)
@@ -242,6 +253,18 @@ nad = np.array(naday)
 nad = np.array(naday)
 unusedd=np.array(unusedday)
 #print (cms,atlas, lhcb, alice,na)
+
+
+
+# numbers for danilo
+startgrant=datetime.datetime(2019, 4, 1, 0, 0, 0)
+endgrant = datetime.datetime(2020, 10, 31, 23, 59, 59)
+for num in range(0,len(dates)):
+    dt = stringtodate(dates[num])
+    if dt != False and dt.weekday()==0 and dt> datetime.datetime(2020, 7, 31, 23, 59, 59):
+        print (dates[num],'Fraction of grant used',round(cms[num]/(30e6/4)*100),'%;', 'Fraction of grant time', round(((dt-startgrant).days*1.)/((endgrant-startgrant).days)*100), "%" )
+    #print (num)
+
 
 plt.figure(figsize=(6,10))
 
@@ -263,7 +286,7 @@ plt.legend(('CMS', 'ATLAS','LHCb', 'ALICE', 'N/A', "Unused"),loc='upper left')
 scale = (cmstot[-1]+atlastot[-1]+lhcbtot[-1]+alicetot[-1]+natot[-1])*2
 axes = plt.gca()
 #axes.set_xlim([xmin,xmax])
-axes.set_ylim([0,40e6])
+axes.set_ylim([0,50e6])
 #plt.locator_params(nbins=5)
 #plt.yscale("log")
 
@@ -314,3 +337,17 @@ if tots['Unused'] <0:
 
 #plt.show()
 plt.savefig('accounting-cineca.png')
+
+#repeat the first plot alone
+plt.figure(figsize=(5,5))
+plt.stackplot(dates,[ cms,atlas, lhcb,alice,na,unused])
+
+plt.ylabel('Core h')
+plt.title('Core h by VO')
+plt.xticks(ind, dates)
+plt.legend(('CMS', 'ATLAS','LHCb', 'ALICE', 'N/A', "Grant"),loc='upper left')
+scale = (cmstot[-1]+atlastot[-1]+lhcbtot[-1]+alicetot[-1]+natot[-1])*2
+axes = plt.gca()
+#axes.set_xlim([xmin,xmax])
+axes.set_ylim([0,50e6])
+plt.savefig('accounting-cineca-for-compops.png')
