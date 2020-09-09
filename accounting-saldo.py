@@ -263,7 +263,7 @@ print ("=== CMS Accounting ===")
 for num in range(0,len(dates)):
     dt = stringtodate(dates[num])
     if dt != False and dt.weekday()==6 and dt> datetime.datetime(2020, 7, 31, 23, 59, 59):
-        print (dates[num],'Fraction of grant used',round(cms[num]/(30e6/4)*100),'%;', 'Fraction of grant time', round(((dt-startgrant).days*1.)/((endgrant-startgrant).days)*100), "%. Grant (Million h)",7.5, " Used (Million h)", round(cms[num]/1e6))
+        print (dates[num],'Fraction of grant used',round(cms[num]/(30e6/4)*100),'%;', 'Fraction of grant time', round(((dt-startgrant).days*1.)/((endgrant-startgrant).days)*100), "%. Grant (Million h)",7.5, " Used (Million h)", round(cms[num]/1e6*10)/10)
     #print (num)
 print ("============")
 
