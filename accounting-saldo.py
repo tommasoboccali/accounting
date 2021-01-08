@@ -231,8 +231,8 @@ import datetime
 
 print ("Speed of utilization in the last 10 days:", speed/10., "per day.")#" At this speed, there are", round((30e6-tottot)/(speed/10.)), "days left to reach 30e6.")
 print ("It is", round (1000*speed/10./30e6)/10.,"% per day.")#" That date would be",datetime.date.today()+datetime.timedelta(days=round((30e6-tottot)/(speed/10.))))
-deltadays = (datetime.datetime(2020, 12, 30, 23, 59, 59)-datetime.datetime.today()).days
-print ("Extrapolation to Dec 31st  (",deltadays,"days ) gives a total of",int(tottot/30e6*100)+deltadays*  round (1000*speed/10./30e6)/10. ,"%" )
+deltadays = (datetime.datetime(2021, 2, 28, 23, 59, 59)-datetime.datetime.today()).days
+print ("Extrapolation to Feb 28th  (",deltadays,"days ) gives a total of",int(tottot/30e6*100)+deltadays*  round (1000*speed/10./30e6)/10. ,"%" )
 
 
 
@@ -287,7 +287,7 @@ plt.legend(('CMS', 'ATLAS','LHCb', 'ALICE', 'N/A', "Unused"),loc='upper left')
 scale = (cmstot[-1]+atlastot[-1]+lhcbtot[-1]+alicetot[-1]+natot[-1])*2
 axes = plt.gca()
 #axes.set_xlim([xmin,xmax])
-axes.set_ylim([0,70e6])
+axes.set_ylim([0,80e6])
 #plt.locator_params(nbins=5)
 #plt.yscale("log")
 
