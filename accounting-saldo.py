@@ -287,7 +287,7 @@ plt.legend(('CMS', 'ATLAS','LHCb', 'ALICE', 'N/A', "Unused"),loc='upper left')
 scale = (cmstot[-1]+atlastot[-1]+lhcbtot[-1]+alicetot[-1]+natot[-1])*2
 axes = plt.gca()
 #axes.set_xlim([xmin,xmax])
-axes.set_ylim([0,80e6])
+axes.set_ylim([0,90e6])
 #plt.locator_params(nbins=5)
 #plt.yscale("log")
 
